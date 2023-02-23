@@ -1,12 +1,19 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-const initialState = { showToggle: false };
+const initialState = { showToggle: false, notification: null };
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     cartToggle(state) {
       state.showToggle = !state.showToggle;
+    },
+    showNotification(state, action) {
+      state.notification = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      }
     },
   },
 });
